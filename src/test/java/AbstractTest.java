@@ -6,6 +6,7 @@ import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.remote.MobilePlatform;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
@@ -75,6 +76,11 @@ public class AbstractTest {
     @AfterTest
     public void tearDown() throws Exception {
         driver.quit();
+    }
+
+    @AfterMethod
+    public void resetApp() {
+        driver.resetApp();
     }
 
 }
