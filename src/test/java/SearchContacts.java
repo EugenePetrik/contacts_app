@@ -10,8 +10,8 @@ import static pageobjects.BasePage.platform;
 
 public class SearchContacts extends AbstractTest {
 
-    @Test(description = "Find Name")
-    public void searchContact() throws Exception {
+    @Test(description = "Search by full name")
+    public void testSearchContact() throws Exception {
         boolean searchSuccessful = new ContactsListPage(driver)
                 .searchByName("Byron Workman")
                 .isSearchSuccessful();
@@ -19,8 +19,8 @@ public class SearchContacts extends AbstractTest {
         Assert.assertTrue(searchSuccessful);
     }
 
-    @Test(description = "Positive Search")
-    public void positiveSearch() {
+    @Test(description = "Search by part name")
+    public void testSearchByPartName() throws Exception {
         ArrayList<MobileElement> findAllNames = new ContactsListPage(driver)
                 .searchByName("Li")
                 .getAllActiveNames();
@@ -34,7 +34,7 @@ public class SearchContacts extends AbstractTest {
     }
 
     @Test(description = "Negative Search")
-    public void negativeSearch() {
+    public void testNegativeSearch() throws Exception {
         ArrayList<MobileElement> findAllNames = new ContactsListPage(driver)
                 .searchByName("123")
                 .getAllActiveNames();
