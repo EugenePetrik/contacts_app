@@ -15,6 +15,9 @@ public class ContactsListPage extends BasePage {
     private MobileElement searchForContact;
 
     @iOSFindAll(@iOSFindBy(xpath = "//XCUIElementTypeStaticText[@visible=\"true\"]"))
+    private ArrayList<MobileElement> visibleContactsCollection;
+
+    @iOSFindAll(@iOSFindBy(xpath = "//XCUIElementTypeTable//XCUIElementTypeCell"))
     private ArrayList<MobileElement> contactsCollection;
 
     @AndroidFindBy(id = "main_text")
@@ -38,8 +41,8 @@ public class ContactsListPage extends BasePage {
         }
     }
 
-    public ArrayList<MobileElement> getAllActiveNames() {
-        return contactsCollection;
+    public ArrayList<MobileElement> getAllVisibleNames() {
+        return visibleContactsCollection;
     }
 
     public String selectContact(String fullName) {
@@ -59,7 +62,12 @@ public class ContactsListPage extends BasePage {
     }
 
     public ContactsDetailsPage clickToContactName() {
-        contactsCollection.get(0).click();
+        visibleContactsCollection.get(0).click();
+        return new ContactsDetailsPage(driver);
+    }
+
+    public ContactsDetailsPage clickToContact(int i) {
+        contactsCollection.get(i).click();
         return new ContactsDetailsPage(driver);
     }
 
@@ -68,8 +76,8 @@ public class ContactsListPage extends BasePage {
     }
 
     @Override
-    public ContactsListPage initializePage() {
-        return this;
+    public BasePage initializePage() {
+        return null;
     }
 
 }

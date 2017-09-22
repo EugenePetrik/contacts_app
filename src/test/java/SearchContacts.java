@@ -23,7 +23,7 @@ public class SearchContacts extends AbstractTest {
     public void testSearchByPartName() throws Exception {
         ArrayList<MobileElement> findAllNames = new ContactsListPage(driver)
                 .searchByName("Li")
-                .getAllActiveNames();
+                .getAllVisibleNames();
 
         Assert.assertEquals(findAllNames.size(), 2);
 
@@ -37,7 +37,7 @@ public class SearchContacts extends AbstractTest {
     public void testNegativeSearch() throws Exception {
         ArrayList<MobileElement> findAllNames = new ContactsListPage(driver)
                 .searchByName("123")
-                .getAllActiveNames();
+                .getAllVisibleNames();
 
         Assert.assertEquals(findAllNames.size(), 0);
 

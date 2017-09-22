@@ -79,7 +79,7 @@ public class AbstractTest {
     }
 
     @AfterMethod
-    public void resetApp() {
+    public void resetApp() throws Exception {
         driver.resetApp();
     }
 
