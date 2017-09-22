@@ -3,6 +3,7 @@ package pageobjects;
 import enums.Platform;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.pagefactory.AndroidFindAll;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSFindAll;
 import io.appium.java_client.pagefactory.iOSFindBy;
@@ -12,12 +13,15 @@ import java.util.ArrayList;
 public class ContactsListPage extends BasePage {
 
     @iOSFindBy(accessibility = "Search for contact")
+    @AndroidFindBy(id = "main_search")
     private MobileElement searchForContact;
 
     @iOSFindAll(@iOSFindBy(xpath = "//XCUIElementTypeStaticText[@visible=\"true\"]"))
+    @AndroidFindAll(@AndroidFindBy(id = "name"))
     private ArrayList<MobileElement> visibleContactsCollection;
 
     @iOSFindAll(@iOSFindBy(xpath = "//XCUIElementTypeTable//XCUIElementTypeCell"))
+    @AndroidFindAll(@AndroidFindBy(xpath = "//*[@resource-id=\"com.jayway.contacts:id/result_list\"]//android.widget.TextView[@resource-id=\"com.jayway.contacts:id/name\"]"))
     private ArrayList<MobileElement> contactsCollection;
 
     @AndroidFindBy(id = "main_text")
