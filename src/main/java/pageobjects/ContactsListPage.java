@@ -58,13 +58,18 @@ public class ContactsListPage extends BasePage {
         return errorMessageForAndroid.getText();
     }
 
+    public ContactsDetailsPage clickToContactName() {
+        contactsCollection.get(0).click();
+        return new ContactsDetailsPage(driver);
+    }
+
     public ContactsListPage(AppiumDriver<MobileElement> driver) {
         super(driver);
     }
 
     @Override
-    public BasePage initializePage() {
-        return null;
+    public ContactsListPage initializePage() {
+        return this;
     }
 
 }
